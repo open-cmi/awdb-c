@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libaiwebdb
+Description: C library for the aiwen DB file format
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -laiwendb
+Cflags: -I${includedir}
