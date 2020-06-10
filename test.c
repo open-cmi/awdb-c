@@ -55,41 +55,55 @@ if (entry_data.has_data) {
 	printf("洲:\t%s\n",buf);
  }
  
+ status =AWDB_get_value(&result.entry, &entry_data,"areacode",  NULL);
+ if (entry_data.has_data) { 
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("国家编码:\t%s\n",buf);
+ }
+
 status =AWDB_get_value(&result.entry, &entry_data,"country",  NULL);
 if (entry_data.has_data) { 
 	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
 	printf("国家:\t%s\n",buf);
  }
  
-status =AWDB_get_value(&result.entry, &entry_data,"accuracy",  NULL);
-if (entry_data.has_data) { 
-
-	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
-	printf("精度:\t%s\n",buf);
- }
- 
- 
- 
 status =AWDB_get_value(&result.entry, &entry_data,"zipcode",  NULL);
 if (entry_data.has_data) { 
 	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
-	printf("zipcode:\t%s\n",buf);
+	printf("邮编:\t%s\n",buf);
  }
- 
- 
+
 status =AWDB_get_value(&result.entry, &entry_data,"timezone",  NULL);
 if (entry_data.has_data) { 
 	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
 	printf("时区:\t%s\n",buf);
  }
+
+status =AWDB_get_value(&result.entry, &entry_data,"accuracy",  NULL);
+if (entry_data.has_data) { 
+
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("定位精度:\t%s\n",buf);
+ }
+ 
+status =AWDB_get_value(&result.entry, &entry_data,"source",  NULL);
+if (entry_data.has_data) { 
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("定位方式:\t%s\n",buf);
+ }
  
  //可能有多个 省市  0 获取第一个
- status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","prov",  NULL);
+status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","prov",  NULL);
 if (entry_data.has_data) { 
 	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
 	printf("省:\t%s\n",buf);
  }
  
+status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","city",  NULL);
+if (entry_data.has_data) { 
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("城市:\t%s\n",buf);
+ }
   
 status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","district",  NULL);
 if (entry_data.has_data) { 
@@ -99,20 +113,45 @@ if (entry_data.has_data) {
 	printf("区县:\t%s\n",buf);
  }
  
- status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","latwgs",  NULL);
+status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","latwgs",  NULL);
 if (entry_data.has_data) { 
-
-
 	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
 	printf("纬度:\t%s\n",buf);
  }
-  status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","lngwgs",  NULL);
+
+status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","lngwgs",  NULL);
 if (entry_data.has_data) { 
-
-
 	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
 	printf("经度:\t%s\n",buf);
  }
+
+status =AWDB_get_value(&result.entry, &entry_data,"multiAreas","0","radius",  NULL);
+if (entry_data.has_data) { 
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("半经:\t%s\n",buf);
+ }
+
+
+status =AWDB_get_value(&result.entry, &entry_data,"isp",  NULL);
+if (entry_data.has_data) { 
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("运营商:\t%s\n",buf);
+ }
+
+status =AWDB_get_value(&result.entry, &entry_data,"asnumber",  NULL);
+if (entry_data.has_data) { 
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("AS号:\t%s\n",buf);
+ }
+
+
+status =AWDB_get_value(&result.entry, &entry_data,"owner",  NULL);
+if (entry_data.has_data) { 
+	buf=awdb_strndup((char*)entry_data.utf8_string,entry_data.data_size);
+	printf("拥有者:\t%s\n",buf);
+ }
+
+
  //打印全部信息
 AWDB_entry_data_list_s *entry_data_list = NULL;
 AWDB_entry_s entry ={ .awdb = &awdb, .offset = result.entry.offset };
