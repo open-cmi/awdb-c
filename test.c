@@ -47,7 +47,7 @@ int main(int argc, char **argv)
         exit(2);
     }
 	if (!result.found_entry) {
-		fprintf("no results..没有查询到结果\n");
+		printf("no results..没有查询到结果\n");
 		exit(2);
 	}
 	
