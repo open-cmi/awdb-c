@@ -46,8 +46,12 @@ int main(int argc, char **argv)
         fprintf(stderr,"\n  Error from getaddrinfo for %s - %s\n\n",ip_address, gai_strerror(gai_error));
         exit(2);
     }
+	if (!result.found_entry) {
+		fprintf("no results..没有查询到结果\n");
+		exit(2);
+	}
 	
-    AWDB_entry_data_s entry_data;
+AWDB_entry_data_s entry_data;
 char* buf=0;	
 status =AWDB_get_value(&result.entry, &entry_data,"continent",  NULL);
 if (entry_data.has_data) { 
